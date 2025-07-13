@@ -1,5 +1,12 @@
 # /bin/bash
-yay -S aur/asdf-vm-git
-yay -S extra/zerotier-one
-yay -S cursor-bin
-yay -S gvfs-smb
+
+# Array of packages to install
+packages=(
+    "aur/asdf-vm-git"
+    "extra/zerotier-one"
+    "cursor-bin"
+    "gvfs-smb"
+)
+
+# Install all packages without user input
+yay -S --noconfirm "${packages[@]}"
