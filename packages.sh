@@ -15,14 +15,15 @@ packages=(
 # Install all packages without user input
 yay -S --noconfirm "${packages[@]}"
 sudo systemctl enable --now sshd
-
-# Append bash_includes to ~/.bashrc if not already present
-BASH_INCLUDES_CONTENT=$(cat bash_includes)
-if ! grep -qF "$BASH_INCLUDES_CONTENT" ~/.bashrc; then
-    echo "$BASH_INCLUDES_CONTENT" >> ~/.bashrc
-    echo "Appended bash_includes to ~/.bashrc"
-else
-    echo "bash_includes already in ~/.bashrc"
-fi
+  
+# Update bash_includes in ~/.bashrc using markers
+sed -i '/# BEGIN OMARCHY_BASH_INCLUDES/,/# END OMARCHY_BASH_INCLUDES/d' ~/.bashrc
+  
+echo '# BEGIN OMARCHY_BASH_INCLUDES' >> ~/.bashrc
+cat bash_includes >> ~/.bashrc
+echo '# END OMARCHY_BASH_INCLUDES' >> ~/.bashrc
+  
+echo "Updated bash_includes in ~/.bashrc"
+  
 # Source the updated .bashrc (optional, for immediate effect in current session)
 source ~/.bashrc
