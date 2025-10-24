@@ -2,7 +2,6 @@
 
 # Array of packages to install
 packages=(
-    "aur/asdf-vm-git"
     "extra/zerotier-one"
     "extra/base-devel"
     "aur/bat"
