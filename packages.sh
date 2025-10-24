@@ -7,7 +7,6 @@ packages=(
     "extra/base-devel"
     "aur/bat"
     "extra/samba"
-    "cursor-bin"
     "extra/openssh"
     "gvfs-smb"
 )
